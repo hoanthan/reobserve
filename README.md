@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-npm install --save reobserve
+npm install --save reobs
 ```
 
 ## Usage
