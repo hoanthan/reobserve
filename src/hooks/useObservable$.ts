@@ -7,7 +7,7 @@ export default function useObservable$<TIn = any, TOut = any>(
   input$: Observable<TIn>,
   observer?: Observer<TOut>
 ) {
-  const destroy$ = new Subject<void>()
+  const destroy$ = React.useMemo(() => new Subject<void>(), [])
   const [value, setValue] = React.useState<TOut | undefined>()
 
   const onNext = useCallback((val: TOut) => {
