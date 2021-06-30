@@ -12,17 +12,29 @@ npm install --save reobserve
 
 ## Usage
 
+### With **Async** Component
+
 ```tsx
-import React, { Component } from 'react'
+import React from 'react'
 
-import MyComponent from 'reobserve'
-import 'reobserve/dist/index.css'
+import { Async } from 'reobs'
+import { BehaviorSubject } from 'rxjs'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const now = new BehaviorSubject(new Date().toLocaleString())
+setInterval(() => {
+  now.next(new Date().toLocaleString())
+}, 1000)
+
+const App = () => {
+  return (
+    <Async as={({children}) => <h2>{children}</h2>}>
+      {now}
+    </Async>
+  )
 }
+
+export default App
+
 ```
 
 ## License
